@@ -20,19 +20,19 @@ Output: 9
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        i, j = 1, len(height)-1
-        ans = 0
-        l_max, r_max = height[0], height[-1]
+        trappedWater = 0
+        maxLeft , maxRight = height[0], height[-1]
+        i, j = 1, len(height)-2
         while i <= j:
-            if l_max < height[i]:
-                l_max = height[i]
-            if r_max < height[j]:
-                r_max = height[j]
-            if l_max < r_max:
-                ans += l_max - height[i]
+            if maxLeft < height[i]:
+                maxLeft = height[i]
+            if maxRight < height[j]:
+                maxRight = height[j]
+            if maxLeft < maxRight:
+                trappedWater += maxLeft - height[i]
                 i += 1
             else:
-                ans += r_max - height[j]
+                trappedWater += maxRight - height[j]
                 j -= 1
-                
-        return ans
+        return trappedWater
+        
