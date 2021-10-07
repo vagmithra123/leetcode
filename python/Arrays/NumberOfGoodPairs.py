@@ -28,6 +28,26 @@ Explanation: Each pair in the array are good.
 
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
+        hashMap = {}
+        res = 0
+        for num in nums:
+            if num in hashMap:
+                res += hashMap[num]
+                hashMap[num] += 1
+            else:
+                hashMap[num] = 1
+                
+        return res
+        
+
+
+
+
+
+
+
+
+        '''
         count = 0
         for i in range(0, len(nums)-1):
             for j in range(i+1, len(nums)):
@@ -35,5 +55,7 @@ class Solution:
                     count += 1
                     
         return count
+
+        '''
         
         
